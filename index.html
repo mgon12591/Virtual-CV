@@ -8,7 +8,8 @@
     --navy: #2c3e50;
     --navy-dark: #1f2c38;
     --accent: #3d8bfd;
-    --accent-2: #e8a33d;
+    --accent-2: #1f2c38;
+    --accent-3: #0693f8;
     --bg: #fafafa;
     --card: #ffffff;
     --border: #e4e4e4;
@@ -27,7 +28,7 @@
  
   /* Headers */
   header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    background: var(--navy-dark);
     color: #fff;
     padding: 60px 20px 50px;
     text-align: center;
@@ -38,8 +39,7 @@
   header::before{
     content:'';
     position:absolute; inset:0;
-    background: radial-gradient(circle at 20% 20%, rgba(61,139,253,0.18), transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(232,163,61,0.15), transparent 40%);
+    background: var(--navy-dark);
     animation: drift 12s ease-in-out infinite alternate;
   }
 
@@ -84,7 +84,7 @@
     to{ opacity:1; transform: translateY(0); }
   }
  
-  /* Navigation */
+  /* Navigation bar */
   nav {
     background: var(--navy-dark);
     display: flex;
@@ -108,7 +108,7 @@
   nav a::after{
     content:'';
     position:absolute; left:18px; right:18px; bottom:8px; height:2px;
-    background: var(--accent);
+    background: var(--accent-3);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
@@ -148,6 +148,13 @@
     padding-bottom: 8px;
     margin-bottom: 18px;
     font-size: 1.35rem;
+  }
+
+  section > p {
+    margin-bottom: 16px;
+  }
+  section > p:last-child {
+    margin-bottom: 0;
   }
  
   /* Entries */
@@ -255,6 +262,7 @@
     <div class="header-links">
       <a href="https://github.com/mgon12591" target="_blank">GitHub Profile</a>
       <a href="https://linkedin.com/in/marco-goncalves-5ab342219" target="_blank">LinkedIn Profile</a>
+      <a href="https://mgon12591.github.io/Virtual-CV/Marco_Kruger_Goncalves_CV.pdf" target="_blank">View CV (PDF)</a>
     </div>
   </div>
 </header>
@@ -270,6 +278,7 @@
     <a href="#experience">Experience</a>
     <a href="#languages">Languages</a>
     <a href="#contact">Contact Details</a>
+    <a href="#references">References</a>
   </div>
 </nav>
 
@@ -277,7 +286,8 @@
 <main>
   <section id="about">
     <h2>About Me</h2>
-    <p>I am an undergraduate student studying towards a Bachelor of Science degree in Information Technology. I have a foundation in Computer Systems, Software and Database Development, and Network Management. I am passionate and eager to learn more about what the world of Information Technology has to offer.</p>
+    <p>I am an undergraduate student pursuing a Bachelor of Science degree in Information Technology at North-West University. My studies have equipped me with a solid foundation across many core disciplines, including the development of computer systems, software, and databases, as well as network management and information security.</p>
+    <p>I am driven by a genuine curiosity for technology and its evolving role in business and society. As I progress through my studies, I am actively seeking opportunities to apply my growing technical skill set to real-world challenges, and I look forward to contributing meaningfully to a team where I can continue learning and developing as an IT professional.</p>
   </section>
  
   <section id="education">
@@ -294,7 +304,6 @@
  
   <section id="skills">
     <h2>Skills</h2>
- 
     <div class="skill-item">
       <div class="skill-top"><strong>C# Programming</strong></div>
       <div class="bar-track"><div class="bar-fill" data-pct="70"></div></div>
@@ -335,26 +344,26 @@
   <section id="projects">
     <h2>Projects</h2>
     <div class="project-grid">
+
+      <div class="project-card">
+        <h3>Database Design Group Project</h3>
+        <p>ERD modelling, Normalization, and SQL query exercises completed as part of Database Development coursework.</p>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">ERD</span></div>
+        <a href="https://github.com/lSiphonl/ApexMotorsport" target="_blank">View repository →</a>
+      </div>
  
+      <div class="project-card">
+        <h3>C# Windows Forms Application Group Project</h3>
+        <p>A Windows Forms application connected to a database management system, was built for a fictional animal shelter.</p>
+        <div class="tag-row"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Windows Forms</span></div>
+        <a href="https://github.com/Paws-ClawsShelter/Paws_And_Claws" target="_blank">View repository →</a>
+      </div>
+
       <div class="project-card">
         <h3>Virtual CV — Portfolio Website</h3>
         <p>This portfolio site itself: a responsive, animated virtual CV built from scratch and deployed via GitHub Pages.</p>
         <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-        <a href="https://github.com/mgon12591" target="_blank">View repository →</a>
-      </div>
- 
-      <div class="project-card">
-        <h3>Database Design Coursework</h3>
-        <p>ERD modelling, normalization, and SQL query exercises completed as part of Database Development coursework.</p>
-        <div class="tag-row"><span class="tag">SQL</span><span class="tag">ERD</span></div>
-        <a href="https://github.com/mgon12591" target="_blank">View repository →</a>
-      </div>
- 
-      <div class="project-card">
-        <h3>C# Windows Forms Application</h3>
-        <p>A Windows Forms application connected to a database management system, built as part of C# programming coursework.</p>
-        <div class="tag-row"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Windows Forms</span></div>
-        <a href="https://github.com/mgon12591" target="_blank">View repository →</a>
+        <a href="https://github.com/mgon12591/Virtual-CV" target="_blank">View repository →</a>
       </div>
  
     </div>
@@ -435,12 +444,14 @@
   }, { threshold: 0.15 });
   sections.forEach(sec => revealObserver.observe(sec));
  
-  const navObserver = new IntersectionObserver((entries) => {
+    const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navItems.forEach(a => a.classList.remove('active'));
         const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
+        if (active) {
+          navItems.forEach(a => a.classList.remove('active'));
+          active.classList.add('active');
+        }
       }
     });
   }, { threshold: 0.5 });
