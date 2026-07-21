@@ -5,7 +5,7 @@ A responsive, single-page portfolio website was built as an interactive virtual 
 Live site: https://mgon12591.github.io/Virtual-CV/
 
 About this project:
-This project was developed as part of the Profile Development Assignement for the CMPG323 module. It presents some of the knowledge I have gathered throughout my studies into one.
+This project was developed as part of the Profile Development Assignment for the CMPG323 module. It presents some of the knowledge I have gathered throughout my studies into one.
 
 Features this project offers:
 - Direct buttons that takes the user to my GitHub Profile, my LinkedIn Profile as well as a PDF version of my CV.
